@@ -1,0 +1,46 @@
+<!--虚幻背景-->
+<view class="top">
+  <image src="../../../img/arrow.png" bindtap="goToShow" class="arrow"/>
+</view>
+<!--群面详细信息-->
+<view class="message">
+  <view class="item1">
+    <view class="shop_name">{{datalist.shop_name}}</view>
+    <view class="ing">{{isIng[0]}}</view>
+  </view>
+  <view>
+    <view wx:for="{{datalist.tap}}" data-id="{{datalist.ids}}" wx:key="keys" class="label-item">{{datalist.tap}}</view>
+  </view>
+  <view class="date">{{datalist.start_date}} 至 {{datalist.end_date}}</view>
+  <view class="txt">
+    ¥{{datalist.price_all}} 正式位 {{datalist.num_selectable}}/{{datalist.num_all}}
+  </view>
+  <view class="txt">
+    ¥{{datalist.price_audit}} 正式位 {{datalist.num_listen}}/{{datalist.num_all}}
+  </view>
+  <view class="line"></view>
+  <view>
+    <view class="big_inf">面试官介绍</view>
+    <view class="big_mes">
+      <image src="../../../img/detail_data/head.jpg" style="width:55px;height:55px;border-radius:50px"/>
+      <view>
+        <text>{{datalist.big}}</text>
+        <text>面试官学历/职位</text>
+      </view>
+    </view>
+    <view class="exp">学历、求学经历；从业经验；完成项目内容、成就；</view>
+  </view>
+  <view class="line"></view>
+  <view>
+    <view class="activity">活动介绍</view>
+    <view class="activity_mes">群面流程；群面中可以解决的问题；</view>
+  </view>
+</view>
+
+<!--海报-->
+<view class="poster">
+  <image mode="aspectFill" src="../../../img/detail_data/head.jpg" style="width:100%;height:100%;border-radius:7px" />
+</view>
+<view class="revise_bar">
+  <button bindtap="revise_data" class="revise">修改</button>
+</view>

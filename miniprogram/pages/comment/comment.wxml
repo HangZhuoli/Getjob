@@ -1,0 +1,51 @@
+<view class="navbar">
+  <image src="../../img/arrow.png" style="width: 40rpx;height: 40rpx;" bindtap="goToDetail" class="arrow" />
+  评价
+</view>
+<view class="top">
+  <text class="{{isAll?'gold':'grey'}}" bindtap="all">全部</text>
+  <text class="{{isGood?'gold':'grey'}}" bindtap="good">好评</text>
+  <text class="{{isBad?'gold':'grey'}}" bindtap="bad">差评</text>
+  <text class="num">累计评价{{comment.length}}条</text>
+</view>
+<view>
+  <view class="all" wx:if="{{isAll}}">
+    <block class="comment" wx:for="{{comment}}" wx:key="index">
+      <view class="com">
+        <view style="display:inline-block;width:100rpx;margin-right: 30rpx;">{{item.name}}</view>
+        <block>
+          <image style="width: 25rpx;height: 25rpx;margin-right: 10rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<item.point}}" src='../../img/deepstar.png' class='fr' wx:key="k"></image>
+          <image style="width: 30rpx;height: 30rpx;margin-right: 10rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<5-item.point}}" src='../../img/lightstar.png' class='fr' wx:key="kk"></image>
+          </block>
+          <view class="content">{{item.content}}</view>
+      </view>
+      <view class="line2" wx:if="{{index+1<comment.length}}"></view>
+    </block>
+  </view>
+  <view class="good" wx:if="{{isGood}}">
+    <block class="comment" wx:for="{{comment}}" wx:key="index" wx:if="{{item.point>=3}}">
+      <view class="com">
+        <view style="display:inline-block;width:100rpx;margin-right: 30rpx;">{{item.name}}</view>
+        <block>
+          <image style="width: 25rpx;height: 25rpx;margin-right: 10rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<item.point}}" src='../../img/deepstar.png' class='fr' wx:key="k"></image>
+          <image style="width: 30rpx;height: 30rpx;margin-right: 10rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<5-item.point}}" src='../../img/lightstar.png' class='fr' wx:key="kk"></image>
+          </block>
+          <view class="content">{{item.content}}</view>
+      </view>
+      <view class="line2" wx:if="{{index+1<comment.length}}"></view>
+    </block>
+  </view>
+  <view class="bad" wx:if="{{isBad}}">
+    <block class="comment" wx:for="{{comment}}" wx:key="index" wx:if="{{item.point<3}}">
+      <view class="com">
+        <view style="display:inline-block;width:100rpx;margin-right: 30rpx;">{{item.name}}</view>
+        <block>
+          <image style="width: 25rpx;height: 25rpx;margin-right: 10rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<item.point}}" src='../../img/deepstar.png' class='fr' wx:key="k"></image>
+          <image style="width: 30rpx;height: 30rpx;margin-right: 10rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<5-item.point}}" src='../../img/lightstar.png' class='fr' wx:key="kk"></image>
+          </block>
+          <view class="content">{{item.content}}</view>
+      </view>
+      <view class="line2" wx:if="{{index+1<comment.length}}"></view>
+    </block>
+  </view>
+</view>

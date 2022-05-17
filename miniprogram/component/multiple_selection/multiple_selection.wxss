@@ -1,0 +1,101 @@
+/* component/selector/singer.wxss */
+/*背景变灰*/
+.singer-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+}
+/*弹窗*/ 
+.singer-body {
+  width: 100%;
+  height: 900rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20px 20px 0px 0px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+/*标题栏*/
+.name {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60rpx;
+  margin-bottom: 50rpx;
+}
+.back{
+  color: #FF8D5B;
+}
+.txt {
+  text-align: center;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #414141;
+}
+.finish{
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #F96F33;
+}
+/*周*/
+.singer-body-list {
+  width: 90%;
+  margin: 0 auto;
+  max-height: 700rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0rpx 10rpx 0rpx 40rpx;
+  overflow: auto;
+}
+.list-item-choosed {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(221,155,0,0.2);
+  border: 2rpx solid #FFB300;
+  border-radius: 6rpx;
+  margin-right: 30rpx;
+  padding: 0rpx 10rpx 0rpx 10rpx;
+  margin-bottom: 30rpx;
+}
+.item-choosed-txt {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #000000;
+}
+.list-item {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6rpx;
+  margin-right: 30rpx;
+  background: rgb(221,155,0,0.1);
+  padding: 0rpx 10rpx 0rpx 10rpx;
+  margin-bottom: 30rpx;
+}
+.item-txt {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #000000;
+  line-height: 70rpx;
+}
+/*底部*/
+.singer-body-kongbai {
+  width: 100%;
+  height: 120rpx;
+}

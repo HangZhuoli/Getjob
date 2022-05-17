@@ -1,0 +1,87 @@
+<view class="window">
+  <button wx:if="{{!user_info}}" bindtap="login">授权登录</button>
+  <!-- 获取手机号 -->
+  <view wx:else class="user_login">
+    <view class="container">
+      <view class="float" hidden='{{viewShowed}}'>
+        <view class='floatContent'>
+          <text>允许授权获取手机号</text>
+          <view class='floatText'>
+            <button bindtap='cancle' class='btn-cancle'>取消</button>
+            <button class='btn-cancle' open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">确认</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view wx:if="{{phoneNumber}}">当前微信绑定手机号为：{{phoneNumber}}</view> -->
+    <image src="{{avatarUrl}}" style="width:150rpx;height:150rpx;border-radius: 100%;"
+      class="{{isBig?'head':''}}" bindtap="modify_head" />
+    <image wx:if="{{isBig==true}}" src="../../img/mine/big.png" style="width: 50rpx;height: 50rpx;margin-left: -20rpx;" />
+    <view class="name" bindtap="{{isbig?'reviseName':''}}">{{nickName}}</view>
+    <view wx:if="{{isBig==true}}">
+      <view class="revise">行业领域</view>
+    </view>
+    <view wx:else class="revise">
+      <view class="revise" bindtap="edit_message">修改信息</view>
+    </view>
+    <!-- 通过isBig字段判断前后辈 -->
+    <!-- 前辈 -->
+    <view wx:if="{{isBig==true}}" class="mesinf">
+      <view class="mes" bindtap="my_order" data-item="{{item}}">
+        <image src="../../img/mine/reserve.png" />
+        <view>我的预约</view>
+      </view>
+      <view class="mes" bindtap="my_freetime">
+        <image src="../../img/mine/time.png" />
+        <view>我的时间</view>
+      </view>
+      <view class="mes" bindtap="stu_book">
+        <image src="../../img/mine/book.png" />
+        <view>学员手册</view>
+      </view>
+      <view class="mes" bindtap="about_us">
+        <image src="../../img/mine/our.png" />
+        <view>关于我们</view>
+      </view>
+      <view wx:if="{{openid=='o_ND45MKiAdvdO8NvzJd3WOfw6Is'}}" bindtap="setting">设置</view>
+      <!-- <button bindtap="my_order" data-item="{{item}}">我的预约</button>
+      <button bindtap="my_freetime">我的时间</button>
+      <button bindtap="stu_book">学员手册</button>
+      <button bindtap="about_us">关于我们</button> -->
+    </view>
+    <!-- 后辈 -->
+    <view wx:else class="mesinf">
+      <view class="mes" bindtap="my_order">
+        <image src="../../img/mine/reserve.png" style="width: 100rpx;height: 100rpx;" />
+        <view>我的预约</view>
+      </view>
+      <view class="mes" bindtap="stu_book">
+        <image src="../../img/mine/time.png" style="width: 100rpx;height: 100rpx;" />
+        <view>学员手册</view>
+      </view>
+      <view class="mes" bindtap="about_us">
+        <image src="../../img/mine/book.png" style="width: 100rpx;height: 100rpx;" />
+        <view>关于我们</view>
+      </view>
+      <view class="mes" bindtap="letShow"> <!-- bindtap="apply_big"-->
+        <image src="../../img/mine/our.png" style="width: 100rpx;height: 100rpx;" />
+        <view>前辈认证</view>
+      </view>
+      <view wx:if="{{openid=='o_ND45MKiAdvdO8NvzJd3WOfw6Is'}}" bindtap="setting">设置</view>
+    </view>
+  </view>
+</view>
+<!-- 弹窗蒙版 -->
+<view class="model" catchtouchmove='preventTouchMove' wx:if='{{showModal}}'></view>
+<view class="modalDlg" catchtouchmove='preventTouchMove' wx:if='{{showModal}}'>
+  <view class='windowRow'>
+    <text class='userTitle'>修改姓名</text>
+    <view class='back' bindtap='back'>返回</view>
+  </view>
+  <view style="width:100%" class='wishName'>
+    <input style="width:100%" bindinput='wish_put' placeholder='请输入姓名' placeholder-class="holder_cls" class='wish_put'></input>
+  </view>
+  <view style="width:94%" class='wishbnt' bindtap='name'>确定</view>
+</view>
+<van-action-sheet show="{{showSheet}}" actions="{{actions}}"  title = " " bind:close="onClose" bind:select="onSelect">
+</van-action-sheet>

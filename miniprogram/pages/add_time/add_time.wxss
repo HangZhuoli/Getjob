@@ -1,0 +1,236 @@
+/* pages/calendar/calendar.wxss */
+page{
+  background: #F5F5F5;
+}
+/*导航栏*/
+.navbar{
+  width: 100%;
+  height: 210rpx;
+  background: linear-gradient(to right,#FFB300,#FF8D5B);
+  text-align: center;
+  line-height: 250rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+.arrow1{
+  position: absolute;
+  left: 5px;
+  top: 46px;
+}
+.txt0{
+  margin-left: 40rpx;
+  margin-top: 210rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  line-height: 44rpx;
+  color: #181818;
+  padding-top: 22rpx;
+  padding-bottom: 22rpx;
+}
+.month{
+  width: 90%;
+  margin: 0 auto;
+  height: 72rpx;
+  background: #FFC21C;
+  border-radius: 16rpx 16rpx 0 0;
+}
+.year-and-month{
+  width: 90%;
+  margin: auto;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+}
+.arrow {
+  width: 100rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 72rpx;
+}
+.calendar{
+  width: 90%;
+  margin: auto;
+  background-color: #FFFFFF;
+}
+
+.today {
+  color: #FF8D5B;
+}
+.grid view {
+  height:40rpx;
+  line-height: 85rpx;
+  width:40rpx;
+}
+.choice{
+  border-radius: 50%;
+  background: #FF8D5B;
+  background-position:center;
+  color: white;
+}
+/* 非本月日期 */
+.notCurrent {
+  color: silver;
+}
+.day-hover {
+  background: red;
+}
+.week-row{
+  width:100%;
+  height: 50rpx;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  line-height: 50rpx;
+  color: #ACACAC;
+}
+.swpier-box {
+  height: 380rpx;
+  width: 100%;
+}
+.days-table {
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.grid {
+  width: calc(100% / 7);
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size:.7rem;
+}
+.time_select{
+  margin-top: 48rpx;
+  padding: 40rpx;
+  background-color: #FFFFFF;
+}
+.ti{
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #181818;
+}
+.txt{
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(249, 112, 51, 0.82);
+}
+.shangxia{
+  display: inline-block;
+  padding-left: 6rpx;
+  padding-right: 6rpx;
+  display: inline-block;
+  background: rgba(255, 194, 28, 0.35);
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+}
+.shang,.xia{
+  padding: 6rpx;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #414141;
+}
+.white{
+  border-radius: 8rpx;
+  background: #FFFFFF;
+}
+.column0{
+  border: 2rpx solid #FFC21C;
+  border-radius: 8rpx;
+  margin-right: 40rpx;
+}
+.time0{
+  text-align: center;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FFC21C;
+}
+.line{
+  margin: 28rpx auto;
+  background: #DDDDDD;
+  width: 100%;
+  height: 2rpx;
+}
+.copy{
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #181818;
+}
+.none{
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #B1B1B1;
+  float: right;
+  margin-left: 20rpx;
+}
+/* .finish_bar{
+  height: 120rpx;
+  width: 100%;
+  background-color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+} */
+.finish{
+  width: 90%!important;
+  height: 76rpx;
+  line-height: 76rpx;
+  background-color: #FFC21C;
+  color:#FFFFFF;
+  font-family: PingFang SC;
+  border-radius: 52rpx;
+  margin:30rpx auto;
+}
+.flex {
+  display: flex;
+}
+/* 轴向 */
+.column {
+  flex-direction: column;
+}
+/* 主轴方向 */
+.m-start {
+  justify-content: flex-start;
+}
+
+.m-end {
+  justify-content: flex-end;
+}
+
+.m-around {
+  justify-content: space-around;
+}
+.m-between {
+  justify-content: space-between;
+}
+.m-center {
+  justify-content: center;
+}
+/* 侧轴方向 */
+.s-start {
+  align-items: flex-start;
+}
+.s-end {
+  align-items: flex-end;
+}
+
+.s-around {
+  align-items: space-around;
+}
+.s-between {
+  align-items: space-between;
+}
+.s-center {
+  align-items: center;
+}

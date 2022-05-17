@@ -1,0 +1,117 @@
+#job_router{
+  width:708rpx;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+#job_router>.icon{
+  width: 100%;
+  height: 320rpx;
+  position: relative;
+  margin-bottom: 30rpx;
+}
+#job_router>.icon>.icon_bcg{
+  width:100%;
+  height: 100%;
+}
+#job_router>.icon>.user_icon{
+  width: 162rpx;
+  height: 162rpx ;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 65rpx;
+  left: 70rpx;
+}
+#job_router>.msg_item{
+  width: 100%;
+  min-height: 108rpx;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
+}
+#job_router>.msg_item view{
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--field-label-color,#646566);
+}
+#job_router .uploader{
+  flex-direction: column;
+  
+}
+#job_router .uploader .up_title{
+  width: 100%;
+  height: auto;
+  padding: 16rpx 0;
+}
+#job_router .uploader .up_file{
+  width: 100%;
+  height: auto;
+}
+#job_router .apply_item{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+#job_router .item_icon{
+  width: 45rpx;
+  height: 45rpx;
+}
+#job_router .introduce{
+  display: flex;
+  flex-direction: column; 
+  min-height: 300rpx; 
+  padding: 0 2rpx;
+}
+#job_router .introduce >view{
+  width: 100%;
+  margin-top: 30rpx;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--field-label-color,#646566);
+}
+.introduce_input{
+  width: 100% !important;
+  height: 306rpx !important;
+  border: 1px solid #707070 !important;
+  border-radius: 16rpx;
+  padding: 24rpx !important;
+}
+.input_cost{
+  display: flex;
+  justify-content: space-between;
+}
+.input_cost>text{
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 500;
+  line-height: 22px;
+  color: #F96F33;
+}
+.edit_btn{
+  width: 424rpx;
+  height: 88rpx;
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 300;
+  background-color: #ffc21c;
+  color: #ffffff;
+  border-radius: 6px;
+  margin-top: 40rpx;
+  margin-bottom: 84rpx;
+}
+.edit_btn::after{
+  border: none;
+}
+.sheetItem{
+  border-bottom: 1px solid #efefef;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  line-height: 22px;
+  color: #414141;
+  opacity: 1;
+}

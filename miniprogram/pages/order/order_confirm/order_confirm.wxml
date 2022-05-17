@@ -1,0 +1,37 @@
+<!--黄色背景+预约步骤-->
+<view class="navbar">
+  <image src="../../../img/arrow.png" bindtap="" class="arrow"/>
+  <view class="steps">
+    <view wx:for="{{steps}}" wx:key="index" wx:for-item="step" class="step">
+      <view class="num {{index>0?'deep':''}}">{{index+1}}</view>
+      <view class="txt0">{{step}}</view>
+      <view class="line" wx:if="{{index+1<steps.length}}"></view>
+    </view>
+  </view>
+</view>
+<!--群面-->
+<view class="body">
+  <view class="title">前端实习生群面</view>
+  <view class="labels">
+    <label wx:for="{{labels}}" wx:key="index" wx:for-item="items" class="label">{{items.label}}</label>
+  </view>
+  <view class="time">2021-07-20 18:00 至 2021-07-20 19:30</view>
+  <view class="line2"></view>
+  <view class="inter">
+    <view class="interviewer">面试官介绍</view>
+    <view class="outer">
+    <view wx:for="{{interviewers}}" wx:key="index" wx:for-item="item" class="interviewers">
+      <image class="head" src="{{item.img}}" />
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <view wx:for="{{interviewers}}" wx:key="index" wx:for-item="item" class="interviewers_inf">
+      <text>{{item.inf}}</text>
+    </view>
+  </view>
+</view>
+<!--完成按钮-->
+<view class="comment_bar">
+<text class="pay">已支付：{{price}}</text>
+  <button bindtap="" class="comment">评论</button>
+</view>

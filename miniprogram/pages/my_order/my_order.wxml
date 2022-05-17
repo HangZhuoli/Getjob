@@ -1,0 +1,57 @@
+<view class="navbar">
+  <image src="../../img/arrow.png" bindtap="goToMine" class="arrow" style="width: 40rpx;height: 40rpx;" />
+  我的订单
+</view>
+<view class="top">
+  <view class="{{iReserve?'gold':'grey'}}" bindtap="iReserve"><text class="{{iReserve?'underline':''}}">我预约的</text>
+  </view>
+  <view class="{{reserveI?'gold':'grey'}}" bindtap="reserveI"><text class="{{reserveI?'underline':''}}">预约我的</text>
+  </view>
+</view>
+<view wx:for="{{datalist}}" wx:key="id" data-index="index" data-name="{{name}}" data-item="{{item}}"
+  bindtap="gotodetail">
+  <view wx:if="{{iReserve}}" class="order">
+    <view>
+      <text class="name">活动名称{{item.name}}</text>
+      <image wx:if="{{qunmian}}" style="width: 30rpx;height: 30rpx;margin-left: 20rpx auto;"
+        src="../../img/my_order/qm.png"></image>
+      <image wx:else style="width: 30rpx;height: 30rpx;margin-left: 10rpx;" src="../../img/my_order/sm.png"></image>
+      <text class="toPay" wx:if="{{item.status==0}}">待付款</text>
+      <text class="hadPay" wx:else>已支付</text>
+    </view>
+    <view class="item2">
+      <text>面试官名字{{itme.big_name}}</text>
+      <text>公司名字{{item.company}}</text>
+    </view>
+    <view><text class="tap">标签{{item.tap}}</text></view>
+    <view class="item3">
+      <text>{{item.start_time}}至{{item.end_time}}</text>
+    </view>
+    <view wx:if="{{lefttime[index]!=1}}">剩{{lefttime[index].time}}自动关闭</view>
+  </view>
+</view>
+
+  <view wx:if="{{reserveI}}">
+    <view class="order1" wx:for="{{big_order}}" wx:key="index" data-index="{{index}}" data-item="{{item}}" data-id="{{id}}" data-status="{{status}}"
+  bindtap="gotodetail_big">
+      <view class="interBox">
+        <image class="head" src="{{item.small_head}}" />
+        <view>
+          <text class="smallName">{{item.name}}</text>
+          <text class="txt">向您发起了咨询</text>
+          <text class="pos">{{min}}分钟前</text>
+          <!--发起时间，形式：xx分钟前-->
+          <view class="rtime">预约时间：{{item.order_date}} {{item.start_time}}至{{item.end_time}}</view>
+          <!--形式：预约时间：2021-07-01 16:30至15:30-->
+        </view>
+      </view>
+      <view class="question">{{item.info}}</view>
+      <view class="all">总计：<text class="money">¥{{item.totalfee}}</text></view>
+      <view class="statu">状态：{{item.status}}</view>
+      <!--金额-->
+      <!-- <view class="statu" wx:if="{{item.status=='2'}}">
+        <view bindtap="agree" data-item="{{item}}">同意</view>
+        <view bindtap="reject" data-item="{{item}}">拒绝</view>
+      </view> -->
+  </view>
+</view>

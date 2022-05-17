@@ -1,0 +1,5 @@
+<!--miniprogram/pages/admin_login/admin_login.wxml-->
+<text>管理员登录</text>
+<input type="text" bindinput="user" placeholder="用户名"></input>
+<input type="text" bindinput="passwd" placeholder="密码" password="true"></input>
+<button type="primary" bindtap="login">登录</button>

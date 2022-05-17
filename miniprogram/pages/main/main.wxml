@@ -1,0 +1,49 @@
+<button wx:if="{{!user_info}}" bindtap="login" >授权登录</button>
+<view wx:else class="user_father">
+  <!-- 受权弹框提醒 -->
+  <view class="container">
+    <view class="float" hidden='{{viewShowed}}'>
+      <view class='floatContent'>
+      <text>允许授权获取手机号</text>
+        <view class='floatText'>
+          <button  bindtap='cancle' class='btn-cancle'>取消</button>
+        <button  class='btn-cancle' open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">确认</button>
+        </view>
+      </view>
+    </view>
+  </view>
+<view wx:if="{{phoneNumber}}">当前微信绑定手机号为：{{phoneNumber}}</view>
+  <image class="user_h" src="{{user_info.avatarUrl}}"></image>
+  <text class="user_n">用户名：{{user_info.nickName}}</text>
+  <text wx:if="{{big}}">\n前辈认证已通过</text>
+  <text wx:else>\n前辈认证未通过</text>
+  <view class="my_order">
+    <button class="button" bindtap="modify_userinfo">修改个人信息</button>
+    <view class="arrow"></view>
+  </view>
+  <view class="my_order">
+    <button class="button" bindtap="apply_big">前辈认证</button>
+    <view class="arrow"></view>
+  </view>
+  <view class="my_order">
+    <button class="button" bindtap="my_freetime">我的空闲时间</button>
+    <view class="arrow"></view>
+  </view>
+  <view class="my_order">
+    <button class="button" bindtap="my_order">我的订单</button>
+  <view class="arrow"></view>
+</view>
+</view>
+<view class="my_order">
+  <button class="button" open-type="contact">联系客服</button>
+  <view class="arrow"></view>
+</view>
+<view class="my_order">
+  <button class="button" open-type="feedback">意见反馈</button>
+  <view class="arrow"></view>
+</view>
+<view class="my_order">
+  <button class="button" bindtap="admin_login">管理员登录
+  </button>
+  <view class="arrow"></view>
+</view>

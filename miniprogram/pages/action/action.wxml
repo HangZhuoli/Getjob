@@ -1,0 +1,31 @@
+<view class="navbar">
+  <view class="activity">活动</view>
+<!--搜索框-->
+<view class="search-box">
+    <input type="text" bindinput="search_content" placeholder="搜索关键字" placeholder-style="color:#FFFFFF;font-size: 28rpx;text-align: center;" bindconfirm="search" confirm-type="search" />
+    <image src="../../img/zhixun/macro.png" style="width: 25rpx;height:25rpx;float: right;position: relative;top: -33rpx;right: 10rpx;" class="btn" bindtap="search" />
+  </view>
+</view>
+<view>
+  <!--升降序-->
+  <view class="sort">
+      <text bindtap="sortBytimeA">升序</text>|<text bindtap="sortBytimeD">降序</text>
+    </view>
+    <!--群面内容-->
+    <view wx:for="{{datalist}}" wx:key="index" class="box-item" data-item="{{item}}"  bindtap="to_detail" >
+        <view>
+          <view class="shop_name">{{item.shop_name}}</view>
+          <view wx:if="{{item.index==0}}" class="ing">{{isIng[0]}}</view>
+          <view wx:elif="{{item.index==1}}" class="had">{{isIng[1]}}</view>
+        </view>
+        <view>
+          <view class="big_name">{{item.big}}</view>
+          <view class="work_place">{{item.work_place}}</view>
+        <view>
+        <view class="label-item">{{item.tap}}</view>
+      </view>
+      <view class="date">{{item.start_date}} 至 {{item.end_date}}</view>
+        <view class="desc">{{item.related}}</view>
+        </view>
+    </view>
+</view>

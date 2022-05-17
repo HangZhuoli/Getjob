@@ -1,0 +1,72 @@
+<!--pages/zhixun/zhixun.wxml-->
+<!--导航栏-->
+<view class="navbar">
+</view>
+<view>
+  <!--搜索框-->
+  <view class="search-box">
+    <input type="text" bindinput="search_content" placeholder="请输入搜索内容" placeholder-style="color:#FFFFFF;font-size: 28rpx;text-align: center;" />
+    <image src="../../img/zhixun/macro.png" style="width: 25rpx;height:25rpx;float: right;position: relative;top: -33rpx;right: 10rpx;" class="btn" bindtap="search" />
+  </view>
+  <!--海报-->
+  <view class="poster">
+    <swiper class="swiper" indicator-dots="true" circular="true" indicator-color="##FFAC0E" indicator-active-color="#FFAC0E" autoplay="true" interval="5000" duration="1000">  
+      <block wx:for="{{posters}}" wx:for-index="index" wx:key="key">  
+        <swiper-item class="swiper-item">  
+          <image src="{{item.url}}" class="slide-image" mode="aspectFill" style="width: 90%;height: 94%;border-radius: 32rpx; margin:0 auto" />  
+        </swiper-item>  
+      </block>
+    </swiper>
+  </view>
+  <view class="mes">
+    <!--求职、留学-->
+    <view class="work_learning">
+      <view wx:for="{{list}}" class="item {{selected==index?'item-bingo':''}}" data-index='{{index}}' bindtap="selected" style="border-radius:{{border_radius[index]}}" wx:key="key">{{item}}
+        <view class="{{selected==index?'item-bingo':''}}"></view>
+      </view>
+    </view>
+    <!--求职————互联网、金融、咨询、快消-->
+    <view class="work_tab" wx:if="{{selected==0}}">
+      <view wx:for="{{list0}}" class="item1 {{selected1==index?'item1-bingo':''}}" data-index='{{index}}' bindtap="selected1" wx:key="key">{{item}}
+        <view class="{{selected1==index?'item-bingo':''}}"></view>
+      </view>
+    <!--求职单个选项-->
+    <view wx:if="{{selected1==0}}">
+      
+      <view wx:for="{{big_mes}}" wx:key="index" data-item="{{item}}" class="data" bindtap="big_detail">
+        <view class="flex">
+          <view>
+            <image src="{{item.data.user_info.user.avatarUrl}}" style="width: 120rpx;height:120rpx;border-radius: 100%;" class="headImg" />
+          </view>
+          <view>
+            <view>
+              <text class="bigName">{{item.data.user_info.user.nickName}}</text>
+              <text class="bigPlace">{{item.data.company}}</text>
+            </view>
+            <view>
+              <view class="middle">
+              <image src="../../img/zhixun/star.png" style="width: 30rpx;height:30rpx;padding: 10rpx;"/>
+              <text class="star">{{item.star}}</text>
+              <text class="consult">{{item.consultNum}}次咨询</text>
+              </view>
+              <view class="date">最近可约时间：{{item.date}}</view>
+            </view>
+          </view>
+        </view>
+        <label wx:for="{{item.labels}}" wx:key="index" data-item="items" class="label">{{item}}</label>
+        <view class="inf">{{item.data.introduction}}</view>
+      </view>
+    </view>
+    <view wx:if="{{selected1==1}}"></view>
+    <view wx:if="{{selected1==2}}"></view>
+    <view wx:if="{{selected1==3}}"></view>
+    </view>
+    <!--留学————商科、社科、数科、工科、理科、金工、其它-->
+    <view class="learn_tab" wx:if="{{selected==1}}">
+      <view wx:for="{{list1}}" class="item2 {{selected2==index?'item2-bingo':''}}" data-index='{{index}}' bindtap="selected2">{{item}}
+        <view class="{{selected2==index?'item-bingo':''}}"></view>
+      </view>
+    </view>
+    
+  </view>
+</view>

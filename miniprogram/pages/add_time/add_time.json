@@ -1,0 +1,6 @@
+{
+  "navigationStyle":"custom",
+  "usingComponents": {
+    "multiple": "/component/multiple_selection/multiple_selection"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/zhixun/zhixun",
+    "pages/apply_big/apply_big",
+    "pages/job_senior/job_senior",
+    "pages/reserve/reserve_small/reserve_small",
+    "pages/my_order/my_order",
+    "pages/my_freetime/my_freetime",
+    "pages/comment/comment",
+    "pages/action/action",
+    "pages/action_detail/action_detail",
+    "pages/order_pay/order_pay",
+    "pages/order/order_confirm/order_confirm",
+    "pages/order/order_finish/order_finish",
+    "pages/order/order_comment/order_comment",
+    "pages/order/order_start/order_start",
+    "pages/reserve/reserve_confirm/reserve_confirm",
+    "pages/reserve/reserve_meeting/reserve_meeting",
+    "pages/reserve/reserve_evaluation/reserve_evaluation",
+    "pages/add_time/add_time",
+    "pages/mine/mine",
+    "pages/manage/add_data/add_data",
+    "pages/groupFace/groupFace",
+    "pages/main/main",
+    "pages/manage/detail_data/detail_data",
+    "pages/manage/show_data/show_data",
+    "pages/manage/revise_data/revise_data",
+    "pages/manage/index/index",
+    "pages/big_detail/big_detail",
+    "pages/admin_login/admin_login",
+    "pages/after_buy/after_buy",
+    "pages/order_detail/order_detail",
+    "pages/bigreserve/bigreserve",
+    "pages/editMessage/editMessage",
+    "pages/abroad_senior/abroad_senior"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFC21C",
+    "navigationBarTitleText": "知询link",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#D53e37",
+    "backgroundColor": "#f6f6f6",
+    "borderStyle": "white",
+    "list": [
+      {
+        "text": "知询",
+        "pagePath": "pages/zhixun/zhixun",
+        "iconPath":"img/zhixun/zhixun-0.png",
+        "selectedIconPath":"img/zhixun/zhixun-1.png"
+      },
+      {
+        "text": "活动",
+        "pagePath": "pages/action/action",
+        "iconPath":"img/zhixun/activity-0.png",
+        "selectedIconPath":"img/zhixun/activity-1.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath":"img/zhixun/mine-0.png",
+        "selectedIconPath":"img/zhixun/mine-1.png"
+      }
+    ]
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+  }
+}

@@ -1,0 +1,28 @@
+<view class="navbar">
+  <image src="../../img/arrow.png" style="width: 40rpx;height: 40rpx;" bindtap="goToDetail" class="arrow" />
+  申请前辈
+</view>
+<view class="box">
+  <!-- <input type="text" placeholder="真名" bindinput="add_education"></input> -->
+  <input type="text" placeholder="学历" bindinput="add_education"></input>
+  <view class="line"></view>
+  <input type="text" placeholder="毕业院校" bindinput="add_gra"></input>
+  <view class="line"></view>
+  <input type="text" placeholder="专业" bindinput="add_major"></input>
+  <view class="line"></view>
+  
+  <input type="text" placeholder="您的公司名称" bindinput="add_company"></input>
+  <view class="line"></view>
+  <input type="text" placeholder="您的职务" bindinput="add_duty"></input>
+  <view class="line"></view>
+  <input type="text" placeholder="您所属行业" bindinput="add_profession"></input>
+  <view class="line"></view>
+  <input type="text" placeholder="预期咨询费用(元/分钟)" bindinput="add_cost"></input>
+  <view class="line"></view>
+  <input type="text" placeholder="自我介绍" bindinput="add_introduction"></input>
+  <button type="primary" bindtap="upload_big_info">上传证明</button>
+  <button type="primary" bindtap="upload">提交认证</button>
+  <mp-half-screen-dialog bindbuttontap="choosefile" show="{{show}}" maskClosable="{{false}}" title="选择上传文件"
+    buttons="{{buttons}}"></mp-half-screen-dialog>
+  
+</view>

@@ -1,0 +1,51 @@
+<!--黄色背景+预约步骤-->
+<view class="navbar">
+  <image src="../../img/arrow.png" bindtap="" class="arrow"/>
+  <view class="steps">
+    <view wx:for="{{steps}}" wx:key="index" wx:for-item="step" class="step">
+      <view class="num {{index>0?'deep':''}}">{{index+1}}</view>
+      <view class="txt0">{{step}}</view>
+      <view class="line" wx:if="{{index+1<steps.length}}"></view>
+    </view>
+  </view>
+</view>
+<!--成功约聊-->
+<view class="body">
+  <view wx:if="{{!suc}}" class="wait_response">
+    <view class="txt3 txt-3">您已成功提交约聊邀请</view>
+    <view class="txt3">请耐心等待前辈的回复</view>
+    <view>
+      <view class="title">前辈</view>
+      <view class="big">
+        <image src="../../img/detail_data/head.jpg" style="width:55px;height:55px;border-radius:50px;margin:10px 10px 10px 14px;" />
+        <view class="txt4">
+          <view class="item0">前辈名称</view>
+          <view class="item1">前辈职称/学校</view>
+          <view class="item2">前辈简介</view>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view class="title">约聊时间</view>
+      <view class="reserve_time">{{reserve_time}}</view>
+    </view>
+    <view class="question">
+      问题阐述：
+      <textarea bindinput="add_question" class="question_textarea"></textarea>
+    </view>
+    <view class="doc">
+      问题附件：
+      <view bindinput="add_doc" class="question_doc"></view>
+    </view>
+    <text class="note">请及时查看小程序信息，以免错过重要内容。</text>
+  </view>
+  <!--约聊被拒-->
+  <view wx:if="{{suc}}" class="reason">
+    <view>十分抱歉，您的约聊已被拒绝</view>
+    <view>原因如下：</view>
+    <view bindinput="add_reason" class="reason_text"></view>
+  </view>
+  <view class="txt">
+    <text class="txt1">返回首页</text><text class="txt2">寻找合适您的前辈吧</text>
+  </view>
+</view>

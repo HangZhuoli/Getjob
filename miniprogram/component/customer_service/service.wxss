@@ -1,0 +1,16 @@
+/* component/customer_service/service.wxss */
+/* 客服按钮 */
+.customer_service{
+  position: fixed;
+  z-index: 1000;
+  width: 90rpx;
+  height:90rpx;
+  top: 75%;
+  right: 5%;
+  padding: 0;
+  border: 0 !important;
+}
+.customer_service>image{
+width: 100%;
+height: 100%;
+}

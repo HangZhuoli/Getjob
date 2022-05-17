@@ -1,0 +1,147 @@
+<!--导航栏(头像+信息)-->
+<view class="navbar">
+  <view class="head">
+    <view class="bg"
+      style="background-image: url({{datalist.data.user_info.user.avatarUrl}});background-size: 100% 100%;"></view>
+    <image src="../../img/arrow.png" bindtap="goTozhixun" style="width: 50rpx;height: 50rpx;z-index: 10;"
+      class="arrow" />
+    <text class="bigDetail">前辈详情</text>
+    <image src="{{datalist.data.user_info.user.avatarUrl}}" class="big_head" />
+  </view>
+  <view class="big_mes">
+    <view class="bigName">{{datalist.data.user_info.user.nickName}}</view>
+    <view class="bigPlace">{{datalist.data.company}}</view>
+    <view class="middle">
+      <image src="../../img/zhixun/star.png" style="width: 30rpx;height:30rpx;padding: 10rpx;" />
+      <text class="star">{{datalist.star}}</text>
+      <text class="consult">{{datalist.consultNum}}次咨询</text>
+    </view>
+    <label wx:for="{{datalist.labels}}" wx:key="index" wx:for-item="items" class="label">{{labels[index].label}}</label>
+  </view>
+</view>
+<!--前辈详情+可约时间-->
+<view class="big">
+  <view class="big_tab">
+    <view wx:for="{{tab}}" wx:key='key' class="item {{selected==index?'item-bingo':''}}" data-index='{{index}}'
+      bindtap="selected" style="border-radius:{{border_radius[index]}}">{{item}}
+      <view class="{{selected==index?'items-bingo':''}}"></view>
+    </view>
+    <!--前辈详情-->
+    <view class="big_det" wx:if="{{selected==0}}">
+      <!--前辈介绍-->
+      <view>
+        <view class="int">前辈介绍</view>
+        <view class="int_detail">{{datalist.data.introduction}}</view>
+      </view>
+    </view>
+    <!--可约时间-->
+    <view class="big_det" wx:if="{{selected==1}}">
+      <view class='month flex m-around'>
+        <!-- <view class='arrow' bindtap='prevMonth'>《 </view> -->
+        <view class='year-and-month'>
+          <picker mode="date" value="{{date}}" start="2015-09" end="2020-09" fields='month' bindchange="bindDateChange">
+            <text style="float: left;">{{date}}</text>
+          </picker>
+        </view>
+        <!-- <view class='arrow' bindtap='nextMonth'> 》</view> -->
+      </view>
+      <!--上午or下午-->
+      <view class="shangxia">
+        <text class="shang {{isAm?'black':''}}" bindtap="shang" model:value="{{isAm}}">上午</text>
+        <text style="color: #B1B1B1;">|</text>
+        <text class="xia {{isAm?'':'black'}}" bindtap="xia" model:value="{{isAm}}">下午</text>
+      </view>
+      <!--日历-->
+      <view class='calendar flex column s-center'>
+        <!--日一二三四五六-->
+        <view class='week-row flex m-around'>
+          <view wx:for="{{week}}" wx:key='item'>{{item}}</view>
+        </view>
+        <!--日期-->
+        <swiper class='swpier-box' circular="true" current="{{swiperIndex}}" bindchange='swiperChange'>
+          <swiper-item class='flex m-around days-table '>
+            <view wx:for="{{calendar.first}}" wx:for-item='x' wx:key='date'
+              class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}'
+              data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>{{x.date ===
+              today?'今天':x.day}}
+            </view>
+          </swiper-item>
+          <swiper-item class='flex m-around days-table'>
+            <view wx:for="{{calendar.second}}" wx:for-item='x' wx:key='date'
+              class='grid {{x.month === month?"":"notCurrent"}}' data-month='{{x.month}}' data-day='{{x.day}}'
+              data-date='{{x.date}}' data-test='{{(year + "-" +month + "-" + day)}}' bindtap='bindDayTap'>
+              <!-- {{x.date === today?'今天':x.day}} -->
+              <view class="day">
+                <text
+                  class="dayy {{x.date === today?'today':''}} {{x.date == beSelectDate ? 'choice':''}}">{{x.day}}</text>
+              </view>
+              <view wx:for="{{reserve_time}}" wx:for-index="idx" wx:for-item="item" wx:key="key"  data-time="{{reserve_time[idx]}}" bindtap="{{(reserve_time[idx].isfree && x.date >= today)?'get_time':''}}">
+                <view class="{{x.date >= today?'timetapp':'timetapp2'}}"
+                  wx:if="{{x.date == reserve_time[idx].date&&(!((reserve_time[idx].begintime[0]=='1'&&reserve_time[idx].begintime[1]>='2')||(reserve_time[idx].begintime[0]=='2'&&reserve_time[idx].begintime[1]!=':')))&&isAm}}" data-idx="{{idx}}" style="{{reserve_time[idx].isfree?'':'background-color:rgba(255, 194, 28, 0.46);'}}" >
+                  <view class="{{x.date >= today?'timetap':'timetap2'}}">{{reserve_time[idx].begintime}}</view>
+                  <view class="{{x.date >= today?'timetap':'timetap2'}}">{{reserve_time[idx].endtime}}</view>
+                </view>
+                <view class="timetapp"
+                  wx:if="{{x.date == reserve_time[idx].date&&((reserve_time[idx].begintime[0]=='1'&&reserve_time[idx].begintime[1]>='2')||(reserve_time[idx].begintime[0]=='2'&&reserve_time[idx].begintime[1]!=':'))&&!isAm}}" style="{{reserve_time[idx].isfree?'':'background-color:rgba(255, 194, 28, 0.46)'}}">
+                  <view class="timetap">{{reserve_time[idx].begintime}}</view>
+                  <view class="timetap">{{reserve_time[idx].endtime}}</view>
+                </view>
+              </view>
+            </view>
+          </swiper-item>
+          <swiper-item class='flex m-around days-table'>
+            <view wx:for="{{calendar.third}}" wx:for-item='x' wx:key='date'
+              class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}'
+              data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>{{x.date ===
+              today?'今天':x.day}}</view>
+          </swiper-item>
+          <swiper-item class='flex m-around days-table '>
+            <view wx:for="{{calendar.fourth}}" wx:for-item='x' wx:key='date'
+              class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}'
+              data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>{{x.date ===
+              today?'今天':x.day}}</view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!--评价-->
+  <view class="comment" wx:if="{{selected==0}}">
+    <view class="com">
+      <view>
+        <text class="txt">评价</text>
+        <text class="num">{{num}}条</text>
+      </view>
+      <view>
+        <text class="name">{{username}}</text>
+        <image src="../../img/zhixun/star.png"
+          style="width: 25rpx;height: 25rpx;display: inline-block;margin-left: 20rpx;" />
+        <image src="../../img/zhixun/star.png"
+          style="width: 25rpx;height: 25rpx;display: inline-block;margin-left: 10rpx;" />
+        <image src="../../img/zhixun/star.png"
+          style="width: 25rpx;height: 25rpx;display: inline-block;margin-left: 10rpx;" />
+        <image src="../../img/zhixun/star.png"
+          style="width: 25rpx;height: 25rpx;display: inline-block;margin-left: 10rpx;" />
+        <image src="../../img/zhixun/star.png"
+          style="width: 25rpx;height: 25rpx;display: inline-block;margin-left: 10rpx;margin-right: 10rpx;" />
+        <text class="star">{{star}}</text>
+        <text class="date">{{date}}</text>
+      </view>
+      <view class="say">{{comment}}</view>
+    </view>
+  </view>
+</view>
+<!--温馨提示-->
+<view class="hint">
+  <view>温馨提示</view>
+  <view wx:for="{{hint}}" wx:key="index" item-index="item">
+    {{index+1}}.{{item}}
+  </view>
+</view>
+<!--底部按钮（立即咨询+评价）-->
+<view class="comment_consult">
+  <view class="a">
+    <text bindtap="comment" class="comment1">评价</text>
+    <button bindtap="consult" class="consult1">立即咨询({{datalist.data.cost}}元/15分钟)</button>
+  </view>
+</view>

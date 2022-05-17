@@ -1,0 +1,181 @@
+<view id="job_router">
+  <view class="icon">
+    <image class="icon_bcg" src="../../img/senior/senior_bcg.png">
+    </image>
+    <image class="user_icon" src="https://thirdwx.qlogo.cn/mmopen/vi_32/3KfBP6rtNj6s8RUqBD2ZEuelza0TY6ckqwNEnjcSRxYDDJ9HkETEicAgjfibhKVoflgWQR3gGfyLvMLZ0quHnEow/132">
+      </image>
+  </view>
+  <view class="msg_item">
+    <van-cell-group>
+    <van-field
+      model:value="{{ school }}"
+      label="学校"
+      placeholder="请输入学校"
+      border="{{ false }}"
+      custom-style="padding:0 0 0 2rpx"
+      bind:blur="add_school"
+    />
+</van-cell-group>
+
+  </view>
+  <view class="msg_item apply_item" bindtap="letShow_edu">
+    <van-cell-group>
+      <van-field
+        model:value="{{ edu_record }}"
+        label="学历"
+        placeholder="请选择学历"
+        border="{{ false }}"
+        readonly
+        custom-style="padding:0 0 0 2rpx"
+      />
+    </van-cell-group>
+    <image src="../../img/icon/arrow.png" class="item_icon"></image>
+  </view>
+  <view class="msg_item uploader">
+    <view class="up_title">
+      <text>上传相关证明材料\n(学生证或者学信网截图)</text>
+    </view>
+    <view class="up_file">
+      <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" bind:before-read="beforeRead"/>
+    </view>
+  </view>
+  <view class="msg_item input_cost">
+    <van-cell-group>
+    <van-field
+      model:value="{{ cost }}"
+      label="咨询费用"
+
+      placeholder="请输入咨询费用"
+      border="{{ false }}"
+      custom-style="padding:0 0 0 2rpx"
+      bind:blur="add_cost"
+    />
+    </van-cell-group>
+    <text>元/每分钟</text>
+  </view>
+  <view class="msg_item apply_item" bindtap="letShow" data-num="{{apply_msg[0].number}}">
+    <van-cell-group>
+      <van-field
+        model:value="{{ apply_msg[0].msg }}"
+        label="职位标签1"
+        placeholder="请输入专业"
+        border="{{ false }}"
+        readonly
+        custom-style="padding:0 0 0 2rpx"
+      />
+    </van-cell-group>
+    <image src="../../img/icon/arrow.png" class="item_icon"></image>
+  </view>
+  <view class="msg_item">
+    <view style = "width : 173.6rpx">添加标签</view>
+    <image src="../../img/icon/add.png" style="margin-left:28rpx" class="item_icon" bindtap="add_apply"></image>
+  </view>
+  <view class="msg_item apply_item" bindtap="letShow" wx:for="{{apply_msg}}" wx:key="number" wx:if="{{item.number != 0}}" data-num="{{item.number}}">
+    <van-cell-group bindtap="add_msg">
+      <van-field
+        model:value="{{ item.msg }}"
+        label="职位标签{{item.number + 1}}"
+        placeholder="请输入专业"
+        border="{{ false }}"
+        readonly
+        custom-style="padding:0 0 0 2rpx"
+      />
+    </van-cell-group>
+    <image src="../../img/icon/arrow.png" class="item_icon"></image>
+  </view>
+  <view class="introduce">
+    <view>前辈简介：</view>
+    <van-cell-group>
+    <van-field
+      value="{{ message }}"
+      type="textarea"
+      placeholder="请输入留言"
+      autosize
+      border = "{{flase}}"
+      input-class="introduce_input"
+      maxlength = "300"
+      show-word-limit="300"
+      bind:blur="add_introduction"
+    />
+    </van-cell-group>
+  </view>
+  <view class="btn">
+    <button class="edit_btn" bindtap="update_all_message">
+      确认修改
+    </button>
+  </view>
+</view>
+<van-action-sheet show="{{showSheet}}" actions="{{actions}}"  title = " " bind:close="onClose" bind:select="onSelect">
+</van-action-sheet>
+<van-action-sheet show="{{showSheet_edu}}" actions="{{actions_edu}}"  title = " " bind:close="onClose_edu" bind:select="onSelect_edu">
+</van-action-sheet>
+<!-- <view id="job_router">
+  <view class="icon">
+    <image class="icon_bcg" src="../../img/senior/senior_bcg.png">
+    </image>
+    <image class="user_icon" src="https://thirdwx.qlogo.cn/mmopen/vi_32/3KfBP6rtNj6s8RUqBD2ZEuelza0TY6ckqwNEnjcSRxYDDJ9HkETEicAgjfibhKVoflgWQR3gGfyLvMLZ0quHnEow/132">
+      </image>
+  </view>
+  <view class="msg_item">
+    <van-cell-group>
+    <van-field
+      model:value="{{ value }}"
+      label="学校"
+      placeholder="请输入学校"
+      border="{{ false }}"
+      custom-style="padding:0 0 0 2rpx"
+    />
+</van-cell-group>
+
+  </view>
+  <view class="msg_item">
+    <text>上传相关证明材料</text>
+  </view>
+  <view class="msg_item">
+    <van-cell-group>
+    <van-field
+      model:value="{{ value }}"
+      label="公司"
+      placeholder="请输入公司"
+      border="{{ false }}"
+      custom-style="padding:0 0 0 2rpx"
+    />
+    </van-cell-group>
+  </view>
+  <view class="msg_item">
+    <van-cell-group>
+    <van-field
+      model:value="{{ value }}"
+      label="职位"
+      placeholder="请输入职位"
+      border="{{ false }}"
+      custom-style="padding:0 0 0 2rpx"
+    />
+    </van-cell-group>
+  </view>
+  <view class="msg_item">
+    <van-cell-group>
+    <van-field
+      model:value="{{ value }}"
+      label="咨询费用"
+      placeholder="请输入咨询费用"
+      border="{{ false }}"
+      custom-style="padding:0 0 0 2rpx"
+    />
+    </van-cell-group>
+  </view>
+  <view class="msg_item">
+    <van-cell-group>
+    <van-field
+      model:value="{{ value }}"
+      label="咨询费用"
+      placeholder="请输入咨询费用"
+      border="{{ false }}"
+      custom-style="padding:0 0 0 2rpx"
+    />
+    </van-cell-group>
+  </view>
+  <button bindtap="test">点我跳转</button>
+</view>
+<van-action-sheet show="{{showSheet}}" actions="{{actions}}"  title = " " bind:close="onClose" bind:select="onSelect">
+</van-action-sheet> -->

@@ -1,0 +1,21 @@
+<!--component/selector/singer.wxml-->
+<view class='singer-bg' wx:if="{{isShow}}">
+  <view class='singer-body'>
+    <view class='name'>
+      <text class='back' catchtap="hideMultiple">《</text>
+      <text class='txt'>{{multipleContent}}</text>
+      <text class='finish' catchtap='_multipleConfirm'>确定</text>
+    </view>
+    <view class='singer-body-list'>
+      <block wx:for="{{list}}" wx:for-item="item" wx:key="idx" wx:for-index="idx">
+        <view class='list-item-choosed' wx:if='{{item.type=="choosed"}}' data-mkh='{{idx}}' bindtap='choose_item'>
+          <view class='item-choosed-txt'>{{item.day}}</view>
+        </view>
+        <view class='list-item' data-mkh='{{idx}}' bindtap='choose_item' wx:else>
+          <view class='item-txt'>{{item.day}}</view>
+        </view>
+      </block>
+    </view>
+    <view class='singer-body-kongbai'></view>
+  </view>
+</view>

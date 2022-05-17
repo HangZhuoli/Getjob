@@ -1,0 +1,3 @@
+<button class="customer_service" open-type='contact' plain="true">
+  <image src="../../img/icon/server.png"></image>
+</button>

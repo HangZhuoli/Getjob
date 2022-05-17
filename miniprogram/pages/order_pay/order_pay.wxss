@@ -1,0 +1,123 @@
+/* pages/order_pay/order_pay.wxss */
+/* page{
+  background: #F9F9F9;
+} */
+
+.navbar{
+  width: 100%;
+  height:450rpx;
+  background: linear-gradient(to right,#FFB300,#FF8D5B);
+  text-align: center;
+  line-height: 150rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+.arrow{
+  position: absolute;
+  left: 10rpx;
+  top: 55rpx;
+}
+.order{
+  width: 90%;
+  height: 380rpx;
+  z-index: 10;
+  margin: 150rpx auto 20rpx;
+}
+.title{
+  padding: 60rpx 0rpx 0rpx 50rpx;
+  font-size: 40rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #181818;
+}
+.time{
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #7B7B7B;
+}
+.news{
+  padding: 60rpx 0rpx 0rpx 50rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #181818;
+}
+.pos{
+  width: 86%;
+  margin: 0 auto;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #414141;
+}
+.inf{
+  width: 86%;
+  margin: 0 auto 20rpx;
+}
+.inf1{
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #181818;
+}
+.inf2{
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #414141;
+}
+.white{
+  width: 100%;
+  height: 30rpx;
+  background: #F9F9F9;
+}
+.left{
+  font-size: 40rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  margin: 30rpx 0 0 36rpx;
+}
+.right{
+  font-size: 40rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #EB4D3D;
+  margin: 30rpx 36rpx 0 0;
+}
+.pay_bar{
+  height: 120rpx;
+  width: 100%;
+  background-color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+}
+.goToPay{
+  width: 80%!important;
+  background-color: #FFC21C;
+  box-shadow: 2rpx 6rpx 12rpx rgba(233, 143, 9, 0.59);
+  color:#FFFFFF;
+  font-family: PingFang SC;
+  border-radius: 52rpx;
+  margin:0 auto;
+}
+/* 客服按钮 */
+.customer_service{
+    position: fixed;
+    z-index: 1000;
+    width: 90rpx;
+    height:90rpx;
+    top: 75%;
+    right: 5%;
+    padding: 0;
+    border: 0 !important;
+}
+.customer_service>image{
+  width: 100%;
+  height: 100%;
+}

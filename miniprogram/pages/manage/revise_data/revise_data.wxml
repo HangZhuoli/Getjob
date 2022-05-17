@@ -1,0 +1,104 @@
+<view>
+  <view class="navbar">
+  <image src="../../../img/arrow.png" bindtap="goToShow" class="arrow"/>
+  修改群面
+</view>
+<view class="item-box">
+<!--标题 公司 标签-->
+<view class="item">
+  <text>标题：</text>
+  <input bindinput="shop_name" class="item_input" model:value="{{datalist.shop_name}}"></input>
+</view>
+<view class="line"></view>
+<view class="item">
+  <text>公司：</text>
+  <input bindinput="add_workplace" class="item_input" model:value="{{datalist.work_place}}"></input>
+</view>
+<view class="line"></view>
+<view class="item">
+  <text>标签：</text>
+  <input bindinput="add_tap" class="item_input item_input3" model:value="{{datalist.tap}}"></input>
+  <image src="../../../img/add_data/label_add.png" style="width:30px" class="label_add" />
+</view>
+<view class="line"></view>
+<!--时间选择器-->
+<view class="timer">
+  <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange1" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    开始时间：<view class="time">{{datalist.start_date}}</view><image src="../../../img/add_data/calendar.png" style="width:17px;height:17px;" bindtap="pickerTap"/>
+  </picker>
+  <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange2" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    结束时间：<view class="time">{{datalist.end_date}}</view><image src="../../../img/add_data/calendar.png" style="width:17px;height:17px;" />
+  </picker>
+</view>
+<view class="line"></view>
+<!--主讲人-->
+<view class="item" model:value="{{no_big_show}}">
+  <text>前辈：</text>已入驻：<input bindinput="add_name" class="item_input item_input2" model:value="{{datalist.big}}"></input>
+  <image src="../../../img/add_data/big.png" style="width:17px;height:17px;"  />
+  未入驻：<input bindinput="add_name" class="item_input item_input2"></input>
+  <image src="../../../img/add_data/not_big.png" style="width:17px;height:17px;" bindtap="no_big_inf"/>
+</view>
+<view class="line"></view>
+<!--未入驻前辈信息-->
+<view model:value="{{noBigShow}}" wx:if="{{noBigShow}}">
+  <view class="item3">前辈头像：<image src="../../../img/add_data/photo.png" class="big_head" /></view>
+  <view class="line"></view>
+  <view class="item">前辈名称：<input bindinput="big_name" class="item_input item_input3"></input></view>
+  <view class="line"></view>
+  <view class="item">前辈学历/职位：<input bindinput="big_work" class="item_input item_input4"></input></view>
+</view>
+<view class="line"></view>
+<!--位数选择-->
+<view class="section">
+  <view class="section_title" >
+    正式位总数：
+    <input class="item_input section_input" type="number" model:value="{{datalist.num_all}}" />
+  </view>
+  <view class="section_title" >
+    正式位可选择数：
+    <input class="item_input section_input" type="number" model:value="{{datalist.num_selectable}}" />
+  </view>
+  <view class="section_title" >
+    旁听位数：
+    <input class="item_input section_input" type="number" model:value="{{datalist.num_listen}}" />
+  </view>
+</view>
+<view class="line"></view>
+<!--价格-->
+<view class="price">
+  <view class="price_title" >
+    正式位价格：
+    <input class="price_input" type="number" model:value="{{datalist.price_all}}" bindinput="add_price_all" />
+  </view>
+  <view class="price_title" >
+    旁听位价格：
+    <input class="price_input" type="number" model:value="{{datalist.price_audit}}" bindinput="add_price_listen" />
+  </view>
+</view>
+<view class="line"></view>
+
+<!--相关介绍、面试官介绍、宣传海报-->
+<view class="item2">
+  <text>相关介绍：</text>
+  <textarea bindinput="add_relatedIntroduction" class="item_textarea">{{datalist.related}}</textarea>
+</view>
+<view class="line"></view>
+<view class="item2">
+  <text>面试官介绍：</text>
+  <textarea bindinput="add_precautions" class="item_textarea">{{datalist.interview}}</textarea>
+</view>
+<view class="line"></view>
+<view class="item2 item2-style">
+  <text>宣传海报：</text>
+  <view class="item_image">
+    <image bindtap="add_images" class="add_photo" src="{{actionimg}}" />
+  </view>
+</view>
+</view>
+<view class="delete_bar">
+    <button bindtap="delete_data" class="delete">删除</button>
+  </view>
+  <view class="finish_bar">
+    <button bindtap="add_data" class="finish">完成</button>
+  </view>
+</view>

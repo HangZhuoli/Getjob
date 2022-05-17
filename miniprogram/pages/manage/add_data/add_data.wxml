@@ -1,0 +1,146 @@
+<!--导航栏-->
+<view class="navbar">
+  <image src="../../../img/arrow.png" bindtap="goToIndex" class="arrow" />
+  增加群面
+</view>
+<view class="item-box">
+  <!--分类-->
+  <view class="item">
+    <text>分类：</text>
+    <text class="{{qunmian?'yes':'no'}}" bindtap="qm">群面</text>
+    <text class="{{qunmian?'no':'yes'}}" bindtap="sm">分享会</text>
+  </view>
+  <view class="line"></view>
+  <!--标题 公司 标签-->
+  <view class="item">
+    <text>标题：</text>
+    <input bindinput="shop_name" class="item_input"></input>
+  </view>
+  <view class="line"></view>
+  <view class="item">
+    <text>公司：</text>
+    <input bindinput="add_workplace" class="item_input"></input>
+  </view>
+  <view class="line"></view>
+  <view class="item label">
+    <text>标签：</text>
+    <input bindinput="add_tap" class="item_input item_input3"></input>
+    <image src="../../../img/add_data/label_add.png" style="width:30px" class="label_add" />
+  </view>
+  <view class="line"></view>
+  <!--时间选择器-->
+  <view class="timer">
+    <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange1" bindtap='pickerTap'
+      bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      开始时间：<view class="time">{{startDate}}</view>
+      <image src="../../../img/add_data/calendar.png" style="width:17px;height:17px;" />
+    </picker>
+    <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange2" bindtap='pickerTap'
+      bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      结束时间：<view class="time">{{endDate}}</view>
+      <image src="../../../img/add_data/calendar.png" style="margin-top:20rpx;width:17px;height:17px;" />
+    </picker>
+  </view>
+  <view class="line"></view>
+  <!--主讲人-->
+  <view class="item" wx:if="{{qunmian}}">
+    <text>前辈：</text>已入驻：
+    <picker mode="selector" bindchange="big_change" value="{{big_index}}" range="{{big_array}}">
+      <text>当前选择：{{big_array[big_index].name}}</text>
+      <image src="../../../img/add_data/big.png" style="width:17px;height:17px;" />
+    </picker>
+    未入驻：<input bindinput="add_name" class="item_input item_input2"></input>
+    <image src="../../../img/add_data/not_big.png" bindtap="no_big_inf" style="width:17px;height:17px;" />
+  </view>
+  <view class="line"></view>
+  <!--未入驻前辈信息-->
+  <view model:value="{{noBigShow}}" wx:if="{{noBigShow}}">
+    <view class="item3">前辈头像：
+    <image src="{{no_big_head}}" class="big_head" bindtap="add_head" />
+    </view>
+    <view class="line"></view>
+    <view class="item">前辈名称：<input bindinput="no_big_name" class="item_input item_input3"></input></view>
+    <view class="line"></view>
+    <view class="item">前辈学历/职位：<input bindinput="no_big_work" class="item_input item_input4"></input></view>
+    <view class="line"></view>
+  </view>
+  <view class="item" wx:if="{{!qunmian}}">
+    <text>分享人：</text>已入驻：
+    <picker mode="selector" bindchange="big_change" value="{{big_index}}" range="{{big_array}}">
+      <text>当前选择：{{big_array[big_index].name}}</text>
+      <image src="../../../img/add_data/big.png" style="width:17px;height:17px;" />
+    </picker>
+    未入驻：<input bindinput="add_name" class="item_input item_input2"></input>
+    <image src="../../../img/add_data/not_big.png" bindtap="no_big_inf" style="width:17px;height:17px;" />
+  </view>
+  <!--未入驻分享人信息-->
+  <view model:value="{{noBigShow}}" wx:if="{{noBigShow}}">
+    <view class="item3">分享人头像：
+    <image src="{{no_big_head}}" class="big_head" bindtap="add_head" />
+    </view>
+    <view class="line"></view>
+    <view class="item">分享人名称：<input bindinput="no_big_name" class="item_input item_input3"></input></view>
+    <view class="line"></view>
+    <view class="item">分享人学历/职位：<input bindinput="no_big_work" class="item_input item_input4"></input></view>
+    <view class="line"></view>
+  </view>
+  <!--位数选择-->
+  <view class="section" wx:if="{{qunmian}}">
+    <view class="section__title">
+      正式位总数：
+      <input class="item_input section_input" type="number" bindinput="handleInput0" model:value="{{all}}" />
+    </view>
+    <view class="section__title">
+      正式位可选择数：
+      <input class="item_input section_input" type="number" bindinput="handleInput1" model:value="{{select}}" />
+    </view>
+    <view class="section__title">
+      旁听位数：
+      <input class="item_input section_input" type="number" bindinput="handleInput2" model:value="{{audit}}" />
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="section" wx:if="{{!qunmian}}">
+    <view class="section__title">
+      席位总数：
+      <input class="item_input section_input" type="number" bindinput="handleInput0" model:value="{{all}}" />
+    </view>
+  </view>
+  <view class="line"></view>
+  <!--价格-->
+  <view class="price" wx:if="{{qunmian}}">
+    <view class="price_title">
+      正式位价格：
+      <input class="price_input" type="number" model:value="{{price_all}}" bindinput="add_price_all" />
+    </view>
+    <view class="price_title">
+      旁听位价格：
+      <input class="price_input" type="number" model:value="{{price_audit}}" bindinput="add_price_listen" />
+    </view>
+  </view>
+  <view class="price" wx:if="{{!qunmian}}">
+    <view class="price_title">
+      席位价格：
+      <input class="price_input" type="number" model:value="{{price_all}}" bindinput="add_price_all" />
+    </view>
+  </view>
+  <view class="line"></view>
+  <!--相关介绍、面试官介绍、宣传海报-->
+  <view class="item2">
+    <text>相关介绍：</text>
+    <textarea bindinput="add_relatedIntroduction" class="item_textarea"></textarea>
+  </view>
+  <view class="line"></view>
+  <view class="item2">
+    <text>面试官介绍：</text>
+    <textarea bindinput="add_precautions" class="item_textarea"></textarea>
+  </view>
+  <view class="line"></view>
+  <view class="item2 item2-style">
+    <text>宣传海报：</text>
+    <image bindtap="add_images" src="{{actionimg}}" class="add_photo" />
+  </view>
+  <view class="finish_bar">
+    <button bindtap="add_Data" class="finish">完成</button>
+  </view>
+</view>

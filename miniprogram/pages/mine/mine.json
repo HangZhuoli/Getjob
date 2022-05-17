@@ -1,0 +1,7 @@
+{
+  "usingComponents":{
+    "van-button": "@vant/weapp/button/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
+  },
+  "navigationStyle":"custom"
+}

@@ -1,0 +1,6 @@
+/* miniprogram/pages/after_buy/after_buy.wxss *//* miniprogram/pages/action_detail/action_detail.wxss */
+.user_h{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}

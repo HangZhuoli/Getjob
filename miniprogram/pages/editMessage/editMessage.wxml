@@ -1,0 +1,39 @@
+<view id="edit_router">
+  <view class="juniors_msg_box">
+    <view>
+      <text>头像</text>
+      <image src="{{avatarUrl}}"/>
+    </view>
+    <view>
+      <text>姓名:</text>
+      <input type="text" />
+    </view>
+    <view>
+      <text>性别:</text>
+      <picker class="select" range="{{pickerArrayGender}}" value="{{pickerValueGender}}" bindchange="bindChange" data-index="0">
+        <text>{{pickerArrayGender[pickerValueGender]}}</text>
+      </picker>
+    </view>
+    <view>
+      <text>学历:</text>
+      <picker class="select" range="{{pickerArrayEdu}}" value="{{pickerValueEdu}}" bindchange="bindChange" data-index="1">
+        <text>{{pickerArrayEdu[pickerValueEdu]}}</text>
+      </picker>
+    </view>
+    <view>
+      <text>学校:</text>
+      <input type="text" />
+    </view>
+    <view>
+      <text>专业:</text>
+      <input type="text" />
+    </view>
+    <view>
+      <text>目前状态:</text>
+      <picker class="select" range="{{pickerArrayStatus}}" value="{{pickerValueStatus}}" bindchange="bindChange" data-index="2">
+        <text>{{pickerArrayStatus[pickerValueStatus]}}</text>
+      </picker>
+    </view>
+  </view>
+  <button class="edit_btn">确认修改</button>
+</view>

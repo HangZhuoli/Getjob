@@ -1,0 +1,25 @@
+<view class="box">
+  <view>
+    <view>
+      <view class="shop_name">姓名：{{datalist.user_info.user.nickName}}</view>
+    </view>
+    <view>
+      <view class="big_name">公司：{{datalist.company}}</view>
+      <view class="work_place">毕业院校：{{datalist.gra_school}}</view>
+      <view>
+        <view class="label-item">行业：{{datalist.profession}}</view>
+      </view>
+      <view>
+        <view>主修：{{datalist.major}}</view>
+      </view>
+      <view class="desc">介绍：{{datalist.introduction}}</view>
+      <view>pdf预览
+        <image bindtap="view_pdf" src="../../../img/zhixun/head.jpg"></image>
+      </view>
+      <view wx:for="{{imglist}}" wx:key="idx">
+        <image src="{{imglist[idx]}}" bindtap="preview"></image>
+      </view>
+      <button bindtap="agree">通过</button>
+    </view>
+  </view>
+</view>

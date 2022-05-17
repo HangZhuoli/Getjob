@@ -1,0 +1,100 @@
+<!--黄色背景+预约步骤-->
+<view class="navbar">
+  <image src="../../img/arrow.png" bindtap="" class="arrow"/>
+  <view class="steps">
+    <view wx:for="{{steps}}" wx:key="index" wx:for-item="step" class="step">
+      <view class="num {{index>0?'deep':''}}">{{index+1}}</view>
+      <view class="txt0">{{step}}</view>
+      <view class="line" wx:if="{{index+1<steps.length}}"></view>
+    </view>
+  </view>
+</view>
+<!--状态2：待前辈确认-->
+<view wx:if="{{status==2}}" class="body">
+  <view class="all_title">
+    <view class="title">您已成功提交约聊邀请</view>
+    <view class="title">请耐心等待前辈的回复</view>
+  </view>
+  <view>
+    <view class="txt1">前辈</view>
+    <view class="txt2">
+      <image class="head" src="../../img/zhixun/1591750124013.jpeg" style="width: 120rpx;height:120rpx;border-radius: 100%;margin: 32rpx;" />
+      <view class="txt3">
+        <text class="name">前辈名称</text>
+        <text class="workplace">前辈职称/学校</text>
+        <text class="inf">前辈简介</text>
+      </view>  
+    </view>
+  </view>
+  <view class="time">
+    <view class="txt1">约聊时间</view>
+    <view class="timedetail"> 2021.7.7 下午2:00至3:00</view>
+  </view>
+  <view class="question">
+    <view>问题阐述：</view>
+    <textarea bindinput="add_question" class="question_textarea" placeholder=""></textarea>
+  </view>
+  <view class="questiondoc">
+    <view>问题附件：</view>
+    <view class="doc"></view>
+  </view>
+  <text class="news">请及时查看小程序信息，以免错过重要内容。</text>
+</view>
+
+<!--状态3：订单待开始-->
+<view wx:if="{{status==3}}" class="body">
+    <view class="alltitle">
+      <view class="title">前辈已接受订单</view>
+      <view class="title">您的会议号是：{{meeting}}</view>
+    </view> 
+    <view class="meetingnum"></view>
+    <view class="txt">
+    请提前五分钟进入会议。迟到、行程有变请及时与客服联系。
+    </view>
+  </view>
+  
+<!--状态4：前辈已拒绝-->
+<view wx:if="{{status==4}}" class="body">
+  <view class="reason">
+    <view>十分抱歉，您的约聊已被拒绝</view>
+    <view>原因如下：</view>
+    <view bindinput="add_reason" class="reason_text"></view>
+  </view>
+  <view class="txt">
+    <text class="txt11">返回首页</text><text class="txt22">寻找合适您的前辈吧</text>
+  </view>
+</view>
+
+<!--状态5：订单进行中-->
+<!--状态6：待评价-->
+<view wx:if="{{status==6}}" class="body">
+  <view class="all_title">
+    <view class="title">您的约聊已完成</view>
+    <view class="title">请对本次约聊进行评价</view>
+  </view>
+  <view class="isSolve">
+    <text class="solve">您的问题是否解决：</text>
+    <radio-group bindchange="radioChange">
+      <label class="radio" wx:for="{{items}}" wx:key="{{item.value}}">
+          <radio color="rgb(255,194,28)" value="{{item.value}}" />
+        <view class="radioname">{{item.name}}</view>
+      </label>
+    </radio-group>
+  </view>
+  <view class="line1"></view>
+  <view class="isSolve">
+    <text class="solve">约聊过程是否愉快：</text>
+    <view class="star" bindtap="star" data-index="{{index}}" wx:for="{{userstar}}" wx:key="index">
+      <image src="{{item}}"></image>
+    </view>
+  <view>评分：{{score}}.0分</view>
+  </view>
+  <view class="line1"></view>
+  <view class="comment">
+    <view class="commenttxt">您可以对前辈本次约聊写下评价：</view>
+    <textarea bindinput="add_comment" class="comment_textarea" placeholder="您的评价可以帮助更多想约聊的后辈･◡·"></textarea>
+  </view>
+  <view class="finish_bar">
+    <button bindtap="add_Data" class="finish">完成</button>
+</view>
+</view>

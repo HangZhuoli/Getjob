@@ -1,0 +1,131 @@
+<!--虚幻背景-->
+<view class="top">
+  <view class="bg" style="background-image: url({{datalist.post_ID}});background-size: 100% 100%;"></view>
+</view>
+<!--海报-->
+<view class="poster">
+  <image src="../../img/arrow.png" bindtap="goToAction" class="arrow" style="background-color: #FFC21C;border-radius: 100%;" />
+  <image mode="aspectFill" src="{{datalist.post_ID}}" style="width:100%;height:100%;border-radius:7px" />
+</view>
+<!--群面详细信息-->
+<view class="message">
+  <view class="item1" wx:if="{{qunmian}}">
+    <view class="shop_name">{{datalist.shop_name}}</view>
+    <view class="zhuangtai">
+      <view class="ing" wx:if="{{datalist.index==0}}">{{isIng[0]}}</view>
+      <view class="had" wx:else>{{isIng[1]}}
+      </view>
+    </view>
+  </view>
+  <view class="item1" wx:if="{{!qunmian}}">
+    <view class="shop_name">{{datalist.shop_name}}</view>
+    <view class="zhuangtai">
+      <view class="ing" wx:if="{{datalist.index==0}}">{{isIng[0]}}</view>
+      <view class="had" wx:else>{{isIng[1]}}
+      </view>
+    </view>
+  </view>
+  <view>
+    <view wx:for="{{datalist.tap}}" data-id="{{datalist.ids}}" wx:key="keys" class="label-item">{{datalist.tap}}</view>
+  </view>
+  <view class="date">{{datalist.start_date}} 至 {{datalist.end_date}}</view>
+  <view wx:if="{{qunmian}}">
+    <view class="txt">
+      ¥{{datalist.price_all}} 正式位 {{datalist.num_selectable}}/{{datalist.num_all}}
+    </view>
+    <view class="txt">
+      ¥{{datalist.price_audit}} 旁听位 {{datalist.num_listen}}/{{datalist.num_all}}
+    </view>
+  </view>
+  <view wx:if="{{!qunmian}}">
+    <view class="txt">
+      ¥50 座位席 2/12人
+    </view>
+  </view>
+  <view class="line"></view>
+  <view wx:if="{{qunmian}}">
+    <view class="big_inf">面试官介绍</view>
+    <view class="big_mes">
+      <image src="{{datalist.big_head}}" style="width:55px;height:55px;border-radius:50px" />
+      <view>
+        {{datalist.no_knowledge_big}}
+      </view>
+      <view>{{datalist.no_name_big}}</view>
+    </view>
+    <view class="exp">{{datalist.interview}}</view>
+  </view>
+  <view wx:if="{{!qunmian}}">
+    <view class="big_inf">分享人介绍</view>
+    <view class="big_mes">
+      <image src="{{datalist.big_head}}" style="width:55px;height:55px;border-radius:50px" />
+      <view>
+        {{datalist.no_knowledge_big}}
+      </view>
+      <view>{{datalist.no_name_big}}</view>
+    </view>
+    <view class="exp">{{datalist.interview}}</view>
+  </view>
+  <view class="line"></view>
+  <view>
+    <view class="activity">活动介绍</view>
+    <view class="activity_mes">{{datalist.related}}</view>
+  </view>
+  <view class="line3"></view>
+  <!-- 评论内容 -->
+  <view style="margin:30rpx">
+    <view>
+      <text class="top1">评价</text>
+      <text class="top2">{{comment.length}}条</text>
+      <text class="top3" bindtap="goToComment">查看全部></text>
+    </view>
+    <block class="comment" wx:for="{{comment}}" wx:key="index">
+      <view class="com">
+        <text style="margin-right: 20rpx;">{{item.name}}</text>
+        <block>
+          <image style="width: 30rpx;height: 30rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<item.point}}" src='../../img/deepstar.png' class='fr' wx:key="k"></image>
+          <image style="width: 30rpx;height: 30rpx;" wx:for="iii++" wx:for-item="i" wx:for-index="iii" wx:if="{{iii<5-item.point}}" src='../../img/lightstar.png' class='fr' wx:key="kk"></image>
+          </block>
+        <view class="content">{{item.content}}</view>
+      </view>
+      <view class="line2" wx:if="{{index+1<comment.length}}"></view>
+    </block>
+  </view>
+</view>
+<!-- 立即购买 -->
+<view class="pay_bar">
+  <button class="pay_now" wx:if="{{!isPay}}" bindtap="createOrder">立即购买</button>
+  <button class="pay_had" wx:if="{{isPay}}">已购买</button>
+</view>
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 弹出层 -->
+<view class="jump" wx:if="{{showModal}}">
+  <view wx:if="{{qunmian}}">
+  <view class="top_mask">
+    <text style="float: left;color: #F96F33;" bindtap="goToDetail">取消</text>
+    <text class="title_mask">前端实习生群面</text>
+  </view>
+  <!-- 位置及金额 -->
+  <button class="{{isCheck0?'ischeck':'button'}}" bindtap="{{datalist.num_selectable?'':'tap'}}">
+    <text style="float: left;">正式位<text wx:if="{{datalist.num_selectable==0}}" style="font-size: 30rpx;">(已满)</text></text>
+    <text style="float: right;">￥{{datalist.price_all}}</text>
+  </button>
+  <button class="{{isCheck1?'ischeck':'button'}}" bindtap="audit">
+    <text style="float: left;">旁听位</text>
+    <text style="float: right;">￥{{datalist.price_audit}}</text>
+  </button>
+  <button class="pay" bindtap="confirm">确定</button>
+  </view>
+  <view wx:if="{{!qunmian}}">
+  <view class="top_mask">
+    <text style="float: left;color: #F96F33;" bindtap="goToDetail">取消</text>
+    <text class="title_mask">前端实习生群面</text>
+  </view>
+  <!-- 位置及金额 -->
+  <button class="{{isCheck0?'ischeck':'button'}}" bindtap="tap">
+    <text style="float: left;">座位席</text>
+    <text style="float: right;">￥50</text>
+  </button>
+  <button class="nopay" bindtap="confirm">确定</button>
+  </view>
+</view>

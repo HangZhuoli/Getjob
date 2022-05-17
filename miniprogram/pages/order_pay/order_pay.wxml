@@ -1,0 +1,37 @@
+<!--pages/order_pay/order_pay.wxml-->
+<view class="navbar">
+  <image src="../../img/arrow.png" style="width: 40rpx;height: 40rpx;" bindtap="goToDetail" class="arrow" />
+  确认订单
+</view>
+<view class="order" style="background: url(https://i.loli.net/2021/08/30/7jL5wRls16rv3dx.png) 100% 100% no-repeat">
+  <view class="title">{{datalist.shop_name}}</view>
+  <view>
+    <image src="../../img/order_pay/clock.png" style="width: 30rpx;height: 30rpx;margin-left: 50rpx;margin-right: 20rpx;" />
+    <text class="time">{{datalist.start_date}}至 {{datalist.end_date}}</text>
+  </view>
+  <view class="news">购票信息：</view>
+  <view class="pos">
+  <text style="float: left;">{{choice}}</text>
+  <text style="float: right;">¥{{price}}</text>
+  </view>
+</view>
+<view class="inf">
+  <view class="inf1">注意事项：</view>
+  <view class="inf2">{{datalist.att}}</view>
+</view>
+<view class="white"></view>
+<view>
+  <view style="width: 100%;height: 100rpx;">
+    <text class="left" style="float: left;">总计：</text>
+    <text class="right" style="float: right;">¥{{price}}</text>
+  </view>
+  <radio checked="{{isAgree}}" bindtap="agree" style="display: inline-block;width:20rpx;height:20rpx;margin-left:30rpx;" color="#EB4D3D" value="{{item.value}}" />
+  <text style="margin-left: 30rpx;">已阅读并同意</text>
+  <text style="color: #EB4D3D;">用户协议、买家须知条款</text>
+</view>
+<view class="pay_bar">
+    <button bindtap="pay" class="goToPay">去支付</button>
+  </view>
+<button class="customer_service" open-type='contact' plain="true">
+  <image src="../../img/icon/server.png"></image>
+</button>

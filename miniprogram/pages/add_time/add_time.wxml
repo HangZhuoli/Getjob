@@ -1,0 +1,85 @@
+<!--导航栏-->
+<view class="navbar">
+  <image src="../../img/arrow.png" style="width: 50rpx;height: 50rpx;" bindtap="goToMyfreetime" class="arrow1"/>
+  我的时间
+</view>
+<view class="txt0">日期</view>
+<view class='month flex m-around'>
+    <view class='arrow' bindtap='prevMonth'> 《 </view>
+    <view class='year-and-month'>
+        <picker mode="date" value="{{date}}" start="2015-09" end="2020-09" fields='month' bindchange="bindDateChange">
+        <text>{{date}}</text>
+        </picker>
+    </view>
+    <view class='arrow' bindtap='nextMonth'> 》 </view>
+</view>
+<!--日历-->
+<view class='calendar flex column s-center'>
+	<!--日一二三四五六-->
+  <view class='week-row flex m-around'>
+    <view class='week' wx:for="{{week}}" wx:key='item'>{{item}}</view>
+  </view>
+	<!--日期-->
+  <swiper class='swpier-box' circular="true" current="{{swiperIndex}}" bindchange='swiperChange'>
+    <swiper-item class='flex m-around days-table '>
+      <view wx:for="{{calendar.first}}" wx:for-item='x' wx:key='date'
+        class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>{{x.date === today?'今天':x.day}}</view>
+    </swiper-item>
+    <swiper-item class='flex m-around days-table '>
+      <view wx:for="{{calendar.second}}" wx:for-item='x' wx:key='date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' data-test='{{(year + "-" +month + "-" + day)}}'  bindtap='bindDayTap'>{{x.date === today?'今天':x.day}}
+      </view>
+    </swiper-item>
+    <swiper-item class='flex m-around days-table'>
+      <view wx:for="{{calendar.third}}" wx:for-item='x' wx:key='date'
+        class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>{{x.date === today?'今天':x.day}}</view>
+    </swiper-item>
+    <swiper-item class='flex m-around days-table '>
+      <view wx:for="{{calendar.fourth}}" wx:for-item='x' wx:key='date'
+        class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>{{x.date === today?'今天':x.day}}</view>
+    </swiper-item>
+  </swiper>
+</view>
+<!--时间选择器-->
+<view class="time_select">
+  <view>
+    <text class="ti">时间</text>
+    <text class="txt">可预约时间不可小于30分钟</text>
+  </view>
+  <picker-view style="margin-top:22rpx;width: 100%; height: 50rpx;" bindchange="bindChange" mask-style="height:0;">
+    <view class="shangxia">
+	    <text class="shang {{isAm0?'white':''}}" bindtap="shang0" model:value="{{isAm0}}">上午</text>
+	    <text class="xia {{isAm0?'':'white'}}" bindtap="xia0" model:value="{{isAm0}}">下午</text>
+    </view>
+    <picker-view-column class="column0">
+      <view wx:for="{{times}}" wx:key="{{times}}" class="time0">
+        {{item}}
+      </view>
+    </picker-view-column>
+    <view class="shangxia">
+	    <text class="shang {{isAm1?'white':''}}" bindtap="shang1" model:value="{{isAm1}}">上午</text>
+	    <text class="xia {{isAm1?'':'white'}}" bindtap="xia1" model:value="{{isAm1}}">下午</text>
+    </view>
+    <picker-view-column class="column0">
+      <view wx:for="{{times}}" wx:key="{{times}}" class="time0">
+        {{item}}
+      </view>
+    </picker-view-column>
+  </picker-view>
+  <!--线-->
+  <view class="line"></view>
+  <!--重复-->
+  <view>
+    <text class="copy">重复</text>
+    <view catchtap="showMultiple" class="none">
+      >
+      <multiple id="multiple" bind:multipleCancel="_multipleCancel" bind:multipleConfirm="_multipleConfirm" multipleContent='{{multipleContent}}' multiple_list="{{multiple_list}}">
+      </multiple>
+    </view>
+    <text class="none" model:value="{{copy}}">{{copy}}</text>
+  </view>
+
+</view>
+<!--完成按钮-->
+  <view class="finish_bar">
+    <button bindtap="add_time" class="finish">完成</button>
+  </view>

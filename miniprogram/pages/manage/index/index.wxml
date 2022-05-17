@@ -1,0 +1,24 @@
+<view>
+    <!--导航栏-->
+<view class="navbar">管理</view>
+    <view class="title">群面</view>
+    <!--搜索框-->
+    <view class="search-box">
+        <input type="text" placeholder="请输入搜索内容"/>
+        <button class="btn" bindtap='search'>搜索</button>
+    </view>
+    <!--浏览、添加-->
+    <view class="item-all">
+        <view class="item" bindtap="search_Data">
+            <image src="../../../img/index/browse.png" />
+            <text>浏览</text>
+        </view>
+        <view class="item" bindtap="add_Data">
+            <image src="../../../img/index/add.png" />
+            <text>增加</text>
+        </view>
+        <view class="item">
+            <button type="primary" bindtap="verify">审核</button>
+        </view>
+    </view>
+</view>

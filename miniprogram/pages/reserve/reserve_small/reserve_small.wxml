@@ -1,0 +1,93 @@
+<!--黄色背景+预约步骤-->
+<view class="navbar">
+  <image src="../../../img/arrow.png" bindtap="goToBigDetail" class="arrow"/>
+  <view class="steps">
+    <view wx:for="{{steps}}" wx:key="index" wx:for-item="step" class="step">
+      <view class="num {{index>0?'deep':''}}">{{index+1}}</view>
+      <view class="txt0">{{step}}</view>
+      <view class="line" wx:if="{{index+1<steps.length}}"></view>
+    </view>
+  </view>
+</view>
+<!--提交预约信息-->
+<view class="body" wx:if="{{state==0}}">
+  <view class="title">预约时间</view>
+  <view class="time">约聊剩余时间段</view>
+  <view class="timetappp" wx:for="{{reserve_fengetime}}" wx:for-index="idx" wx:for-item="item" wx:key="key">
+    <view bindtap="taptime" data-begintime="{{reserve_fengetime[idx].begintime}}" data-endtime="{{reserve_fengetime[idx].endtime}}" data-idx="{{idx}}" class="timetapp {{reserve_fengetime[idx].isfree?'':'deep'}}">
+      <view class="timetap">{{reserve_fengetime[idx].begintime}}</view>
+      <view class="timetap">{{reserve_fengetime[idx].endtime}}</view>
+    </view>
+  </view>
+  <view class="line2"></view>
+  <view>
+    <view class="txt1">
+      拍下时间
+      <!-- <button class="btn">-</button> -->
+      <text class="minutes" bindtap="minutes">{{minutes}}分钟</text>
+      <!-- <button class="btn">+</button> -->
+      <text class="txt2">拍下时间以15分钟为一个单位增减，不可少于30分钟</text></view>
+    <view>
+  </view>
+  </view>
+  <view class="line2"></view>
+  <view class="question">
+    问题阐述：
+    <view class="question_box">
+      <textarea bindinput="add_question" class="question_textarea" placeholder="请详细的描述您想咨询的问题，并说明您的相关情况，有利于前辈给出有针对性回答。">
+      </textarea>
+      <image src="../../../img/doc.png" bindtap="doc" class="add_doc" />
+      <image src="../../../img/photo.png" bindtap="img" class="add_img" />
+    </view>
+  </view>
+  <view class="line2"></view>
+  <view class="price">
+    所需总金额：<text class="reserve_price">{{reserve_price}}¥</text>
+  </view>
+  <label><checkbox checked="{{check}}" class="checkbox" /></label>
+  <text class="txt3">已阅读并同意</text><text class="txt4">用户协议、买家须知条款</text>
+  <!--完成按钮-->
+<view class="finish_bar">
+  <button bindtap="finishOrder" class="finish">完成</button>
+  <text class="news">前辈超过48小时未确认将全额退款</text>
+</view>
+</view>
+<!--前辈确认订单-->
+<view class="body"  wx:if="{{state==1}}">
+  <view class="all_title">
+    <view class="title1">您已成功提交约聊邀请</view>
+    <view class="title1">请耐心等待前辈的回复</view>
+  </view>
+  <view>
+    <view class="txt11">前辈</view>
+    <view class="txt22">
+      <image class="head" src="{{big_info.data.user_info.user.avatarUrl}}" style="width: 120rpx;height:120rpx;border-radius: 100%;margin: 32rpx;" />
+      <view class="txt33">
+        <text class="name">{{big_info.data.user_info.user.nickName}}</text>
+        <text class="workplace">{{big_info.data.profession}}/{{big_info.data.gra_school}}</text>
+        <text class="inf">{{big_info.data.profession}}</text>
+      </view>  
+    </view>
+  </view>
+  <view class="time">
+    <view class="txt11">约聊时间</view>
+    <view class="timedetail"> {{date}} 下午{{start_time}}至{{end_time}}</view>
+  </view>
+  <view class="question1">
+    <view>问题阐述：</view>
+    <textarea bindinput="add_question" class="question_textarea" placeholder="">{{}}</textarea>
+  </view>
+  <view class="questiondoc">
+    <view>问题附件：</view>
+    <view class="doc"></view>
+  </view>
+  <text class="news">请及时查看小程序信息，以免错过重要内容。</text>
+</view>
+<!--前辈拒绝订单-->
+<view class="body" wx:if="{{state==2}}">
+  <view class="reason">
+    <view>十分抱歉，您的约聊已被拒绝</view>
+    <view>原因如下：</view>
+    <view bindinput="add_reason" class="reason_text"></view>
+  </view>
+</view>

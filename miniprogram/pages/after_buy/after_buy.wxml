@@ -1,0 +1,22 @@
+<!-- 评论内容 -->
+<block wx:for="{{comment}}" wx:key="index">
+  <view>
+    <image class="user_h" src="{{item.avatarUrl}}"></image>
+    <text>{{item.name}}：</text>
+    <text>{{item.content}}</text>
+  </view>
+</block>
+<!-- 评分 -->
+<view> 打分
+  <view bindtap="star" data-index="{{index}}" wx:for="{{userstar}}" wx:key="index">
+  <image style="width: 30rpx;height: 30rpx;display:inline-block" src="{{item}}"></image>
+  </view>
+  <text>{{score}}.0分</text>
+</view>
+<!-- 发表评论 -->
+<!-- BUG 点击未拉起键盘 -->
+<input type="text" placeholder="请输入评论内容" bindinput="getContent" value="{{user_content}}" />
+<button type="primary" bindtap="upload_content">发表评论</button>
+<view>
+  <button bindtap="createOrder">支付</button>
+</view>

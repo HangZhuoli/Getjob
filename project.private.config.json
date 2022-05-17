@@ -1,0 +1,222 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "pages/getOpenId/index",
+          "pathName": "pages/getOpenId/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/deployService/index",
+          "pathName": "pages/deployService/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/selectRecord/index",
+          "pathName": "pages/selectRecord/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/sumRecordResult/index",
+          "pathName": "pages/sumRecordResult/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/updateRecord/index",
+          "pathName": "pages/updateRecord/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/updateRecordResult/index",
+          "pathName": "pages/updateRecordResult/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/updateRecordSuccess/index",
+          "pathName": "pages/updateRecordSuccess/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/main/main",
+          "pathName": "pages/main/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zhixun/zhixun",
+          "pathName": "pages/zhixun/zhixun",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/browse_data/browse_data",
+          "pathName": "pages/browse_data/browse_data",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/manage/add_data/add_data",
+          "pathName": "pages/manage/add_data/add_data",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/manage/revise_data/revise_data",
+          "pathName": "pages/manage/revise_data/revise_data",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/manage/show_data/show_data",
+          "pathName": "pages/manage/show_data/show_data",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/manage/index/index",
+          "pathName": "pages/manage/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/action/action",
+          "pathName": "pages/action/action",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/trtc/trtc",
+          "pathName": "pages/trtc/trtc",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/action_detail/action_detail",
+          "pathName": "pages/action_detail/action_detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/big_detail/big_detail",
+          "pathName": "pages/big_detail/big_detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/groupFace/groupFace",
+          "pathName": "pages/groupFace/groupFace",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mine/mine",
+          "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/apply_big/apply_big",
+          "pathName": "pages/apply_big/apply_big",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/add_time/add_time",
+          "pathName": "pages/add_time/add_time",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order_pay/order_pay",
+          "pathName": "pages/order_pay/order_pay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my_order/my_order",
+          "pathName": "pages/my_order/my_order",
+          "query": "id=o_ND45MKiAdvdO8NvzJd3WOfw6Is",
+          "scene": null
+        },
+        {
+          "name": "pages/after_buy/after_buy",
+          "pathName": "pages/after_buy/after_buy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/reserve/reserve_confirm/reserve_confirm",
+          "pathName": "pages/reserve/reserve_confirm/reserve_confirm",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/reserve/reserve_evaluation/reserve_evaluation",
+          "pathName": "pages/reserve/reserve_evaluation/reserve_evaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/reserve/reserve_meeting/reserve_meeting",
+          "pathName": "pages/reserve/reserve_meeting/reserve_meeting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/order_start/order_start",
+          "pathName": "pages/order/order_start/order_start",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/reserve/reserve_small/reserve_small",
+          "pathName": "pages/reserve/reserve_small/reserve_small",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/bigreserve/bigreserve",
+          "pathName": "pages/bigreserve/bigreserve",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/apply_big/apply_big",
+          "pathName": "pages/apply_big/apply_big",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

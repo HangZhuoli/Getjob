@@ -1,0 +1,16 @@
+<view class="box">
+  <!--群面内容-->
+  <view wx:for="{{datalist}}" wx:key="index" class="box-item" data-item="{{item}}" bindtap="to_detail">
+      <view>
+        <view class="shop_name">姓名：{{item.user_info.user.nickName}}</view>
+      </view>
+      <view>
+        <view class="big_name">公司：{{item.company}}</view>
+        <view class="work_place">毕业院校：{{item.gra_school}}</view>
+        <view>
+          <view class="label-item">行业：{{item.profession}}</view>
+        </view>
+        <view class="desc">介绍：{{item.introduction}}</view>
+    </view>
+  </view>
+</view>

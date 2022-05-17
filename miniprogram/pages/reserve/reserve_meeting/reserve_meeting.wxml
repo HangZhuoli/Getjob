@@ -1,0 +1,22 @@
+<!--黄色背景+预约步骤-->
+<view class="navbar">
+  <image src="../../../img/arrow.png" bindtap="" class="arrow"/>
+  <view class="steps">
+    <view wx:for="{{steps}}" wx:key="index" wx:for-item="step" class="step">
+      <view class="num {{index>1?'deep':''}}">{{index+1}}</view>
+      <view class="txt0">{{step}}</view>
+      <view class="line" wx:if="{{index+1<steps.length}}"></view>
+    </view>
+  </view>
+</view>
+  <!--支付成功会议号-->
+  <view class="body">
+    <view class="alltitle">
+      <view class="title">前辈已接受订单</view>
+      <view class="title">您的会议号是：</view>
+    </view> 
+    <view class="meetingnum"></view>
+  </view>
+  <view class="txt">
+    请提前五分钟进入会议。迟到、行程有变请及时与客服联系。
+  </view>

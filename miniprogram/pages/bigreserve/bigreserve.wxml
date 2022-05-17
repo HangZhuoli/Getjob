@@ -1,0 +1,155 @@
+<!--状态1：后辈名称、头像、学校、简介、后辈支付金额、后辈约聊时间、后辈问题阐述、后被问题附件，一个字段用于判断前辈拒绝或接收用户
+    状态2：一个字段用于接收前辈拒绝原因
+    状态3：一个字段用于存前辈输入的会议（meetingnum），一个字段用于存前辈输入的直播地址（meetingplace） 
+    状态4：无
+    状态5：问题是否解决、评分、评价
+-->
+<!--黄色背景+预约步骤-->
+<view class="navbar">
+  <image src="../../img/arrow.png" bindtap="" class="arrow" bindtap="back" />
+  <view class="steps">
+    <view wx:for="{{steps}}" wx:key="index" wx:for-item="step" class="step">
+      <view class="num {{index>0?'deep':''}}">{{index+1}}</view>
+      <view class="txt0">{{step}}</view>
+      <view class="line" wx:if="{{index+1<steps.length}}"></view>
+    </view>
+  </view>
+</view>
+<!--状态1：前辈确认订单-->
+<view wx:if="{{status==0}}" class="body">
+  <view>
+    <view class="txt1">后辈</view>
+    <view class="txt2">
+      <image class="head" src="{{datalist.small_head}}"
+        style="width: 120rpx;height:120rpx;border-radius: 100%;margin: 32rpx;" />
+      <view class="txt3">
+        <text class="name">{{datalist.name}}</text>
+        <text class="workplace">后辈职称/学校</text>
+        <text class="inf">后辈简介:{{datalist.info}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="time">
+    <view class="txt1">约聊时间</view>
+    <view class="timedetail"> {{datalist.order_date}} {{datalist.start_time}}至{{datalist.end_time}}</view>
+  </view>
+  <view class="question">
+    <view>问题阐述：</view>
+    <textarea bindinput="add_question" class="question_textarea" placeholder=""></textarea>
+  </view>
+  <view class="questiondoc">
+    <view>问题附件：</view>
+    <view class="doc"></view>
+  </view>
+  <view class="line1"></view>
+  <view class="money">已支付总金额：<text style="float: right;color: #FF4F3D;">{{datalist.totalfee}}¥</text></view>
+  <view class="button">
+    <button bindtap="refuse" class="refuse">拒绝</button>
+    <button bindtap="accept" class="accept">接受</button>
+  </view>
+</view>
+
+<!--状态2：前辈拒绝-->
+<view wx:if="{{status==4}}" class="body">
+  <view class="reason">
+    <view>拒绝订单</view>
+    <view>请你填写拒绝理由：</view>
+    <textarea bindinput="add_reason" class="reason_text"></textarea>
+  </view>
+  <view class="button">
+    <button bindtap="cancel" class="refuse">取消</button>
+    <button bindtap="finish" class="accept">完成</button>
+  </view>
+</view>
+<!--状态3：前辈已接受-->
+<view wx:if="{{status==3}}" class="body">
+  <view class="alltitle">
+    <view class="title">您已接受订单</view>
+  </view>
+  <view class="time">
+    <view class="txt1">约聊时间</view>
+    <view class="timedetail"> {{datalist.order_date}} {{datalist.start_time}}至{{datalist.end_time}}</view>
+  </view>
+  <view class="ple">
+    请在腾讯会议预约普通会议并将会议号/会议邀请粘贴于下方
+    <textarea class="meetingnum" bindinput="meet_number"></textarea>
+  </view>
+  <view class="ple">
+    请填写该会议号的直播地址
+    <textarea class="meetingplace" bindinput="meet_address"></textarea>
+  </view>
+  <view class="teach">
+    点击查看<text>预约教程</text>
+  </view>
+  <view class="foot">
+    <button bindtap="submit" class="summit">提交</button>
+    <view>请提前五分钟进入会议。迟到、行程有变请及时客服联系</view>
+  </view>
+</view>
+
+<!--状态4：订单已完成待后辈评价-->
+<view wx:if="{{status==6}}" class="body">
+  <view class="reason">
+    <view>本次约聊已完成</view>
+    <view>请等待后辈评价</view>
+  </view>
+  <view>
+    <view class="txt1">后辈</view>
+    <view class="txt2">
+      <image class="head" src="../../img/zhixun/1591750124013.jpeg"
+        style="width: 120rpx;height:120rpx;border-radius: 100%;margin: 32rpx;" />
+      <view class="txt3">
+        <text class="name">后辈名称</text>
+        <text class="workplace">后辈职称/学校</text>
+        <text class="inf">后辈简介</text>
+      </view>
+    </view>
+  </view>
+  <view class="time">
+    <view class="txt1">约聊时间</view>
+    <view class="timedetail"> 2021.7.7 下午2:00至3:00</view>
+  </view>
+  <view class="question">
+    <view>问题阐述：</view>
+    <textarea bindinput="add_question" class="question_textarea" placeholder=""></textarea>
+  </view>
+  <view class="line1"></view>
+  <view class="money">约聊回放地址：</view>
+  <view class="meetingplace">httpxxxxxxxxxxxxxxxxxxxxxxxx{{meetingplace}}</view>
+  <view class="hint">温馨提示：回放仅30天内有效</view>
+</view>
+<!--状态5：后辈完成评价-->
+<view wx:if="{{status==7}}" class="body">
+  <view class="reason">
+    <view>您的约聊已完成</view>
+    <view>请对本次约聊进行评价</view>
+  </view>
+  <view class="isSolve">
+    <text class="solve">您的问题是否解决：</text>
+    <radio-group>
+      <label class="radio" wx:for="{{items}}" wx:key="{{item.value}}">
+        <radio color="rgb(255,194,28)" value="{{item.value}}" />
+        <view class="radioname">{{item.name}}</view>
+      </label>
+    </radio-group>
+  </view>
+  <view class="line1"></view>
+  <view class="isSolve">
+    <text class="solve">约聊过程是否愉快：</text>
+    <view class="star" data-index="{{index}}" wx:for="{{userstar}}" wx:key="index">
+      <image src="{{item}}"></image>
+    </view>
+    <view>评分：{{score}}.0分</view>
+  </view>
+  <view class="line1"></view>
+  <view class="comment">
+    <view class="commenttxt">后辈评价：</view>
+    <text>{{comment}}叽里呱啦叽里呱啦</text>
+  </view>
+  <view class="line1"></view>
+  <view class="money">约聊回放地址：</view>
+  <view class="meetingplace">httpxxxxxxxxxxxxxxxxxxxxxxxx{{meetingplace}}</view>
+  <view class="hint">温馨提示：回放仅30天内有效</view>
+</view>
+
+<!--状态7：订单已结束-->
